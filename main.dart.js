@@ -29365,7 +29365,7 @@ $S:2}
 A.azG.prototype={
 $1(a){var s=A.d5().b
 s=s==null?null:s.canvasKitBaseUrl
-return(s==null?"https://www.gstatic.com/flutter-canvaskit/89c39edfdfae2949f6806e4a315c0c08522238b7/":s)+a},
+return(s==null?"canvaskit/":s)+a},
 $S:60}
 A.KX.prototype={
 a0b(){var s=this.aj8(),r=$.bs.bW().ImageFilter.MakeColorFilter(s,null)
