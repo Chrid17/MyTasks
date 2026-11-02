@@ -1,15 +1,13 @@
 {
-    "name": "My Tasks - Todo App",
+    "name": "My Tasks",
     "short_name": "My Tasks",
-    "id": "/",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#F5F3FF",
+    "background_color": "#6D4AE8",
     "theme_color": "#7C3AED",
-    "description": "Organize your day and never miss a task with reminders!",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
-    "categories": ["productivity", "utilities"],
     "icons": [
         {
             "src": "icons/Icon-192.png",

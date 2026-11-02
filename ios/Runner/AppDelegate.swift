@@ -1,6 +1,5 @@
 import Flutter
 import UIKit
-import UserNotifications
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -8,12 +7,6 @@ import UserNotifications
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    // Register for remote notifications (required for FCM push notifications)
-    if #available(iOS 10.0, *) {
-      UNUserNotificationCenter.current().delegate = self
-    }
-    application.registerForRemoteNotifications()
-    
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
