@@ -26,7 +26,7 @@ jobs:
       - run: flutter pub get
 
       - name: Build web
-        run: flutter build web --release --base-href "/${{ github.event.repository.name }}/"
+        run: flutter build web --no-web-resources-cdn --release --base-href "/${{ github.event.repository.name }}/"
 
       - name: Publish to the gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
