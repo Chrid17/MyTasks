@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,95 +18,19 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="A new Flutter project.">
 
-  <!-- iOS meta tags & icons (apple-mobile-web-app-capable required for iOS PWA push) -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="My Tasks">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>my_project</title>
+  <title>My Tasks</title>
   <link rel="manifest" href="manifest.json">
-  <script>
-    // VAPID public key for Web Push notifications
-    window.SUPABASE_VAPID_PUBLIC_KEY = 'BO4yFsSAS7yzsoyY1EEHGDZgdO2dIXhFrWRXHQDked9r0AuZcq6udQYxImmVC5Nu08XilvSNs48zXUCNXwmPuuo';
-    window.SUPABASE_URL = 'https://pujfapldlclvykjjphjy.supabase.co';
-    window.SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1amZhcGxkbGNsdnlrampwaGp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2MDMyNzIsImV4cCI6MjA3NzE3OTI3Mn0.OT1S6YpoMT5q_fzuDx21BX0FoRZi8xURK-MBugeuSEU';
-  </script>
-  <script type="module">
-    // Cleanup old Flutter service workers that might block push notifications
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for(let registration of registrations) {
-          if (registration.active && registration.active.scriptURL.includes("flutter_service_worker.js")) {
-            console.log("Unregistering old Flutter SW:", registration);
-            registration.unregister();
-          }
-        }
-      });
-    }
-
-    console.log('[Push Init] Starting push notification setup...');
-    
-    import { registerAndSubscribePush, isPushSupported } from './push.js';
-    
-    console.log('[Push Init] Module imported successfully');
-    
-    // Function to register push notifications
-    async function initPushNotifications() {
-      console.log('[Push Init] initPushNotifications called');
-      
-      if (!isPushSupported()) {
-        console.log('[Push Init] Push notifications not supported on this browser');
-        return;
-      }
-      
-      console.log('[Push Init] Push is supported, registering...');
-      
-      const url = window.SUPABASE_URL;
-      const anon = window.SUPABASE_ANON;
-      const userId = null; // Will be set by Flutter after auth
-      
-      console.log('[Push Init] Supabase URL:', url);
-      
-      try {
-        const result = await registerAndSubscribePush(url, anon, userId);
-        console.log('[Push Init] Registration result:', result);
-      } catch (e) {
-        console.error('[Push Init] Registration error:', e);
-      }
-    }
-    
-    // Register on first user interaction (required by some browsers)
-    let pushInitialized = false;
-    function tryInitPush() {
-      console.log('[Push Init] tryInitPush called, initialized:', pushInitialized);
-      if (!pushInitialized) {
-        pushInitialized = true;
-        initPushNotifications();
-      }
-    }
-    
-    // Make it available globally for manual testing
-    window.testPushRegistration = initPushNotifications;
-    
-    // Try to register after page load and on first interaction
-    window.addEventListener('load', () => {
-      console.log('[Push Init] Page loaded, waiting 2s...');
-      // Delay slightly to let Flutter initialize
-      setTimeout(tryInitPush, 2000);
-    });
-    
-    // Also register on first user interaction (handles stricter browsers)
-    document.addEventListener('click', tryInitPush, { once: true });
-    document.addEventListener('touchstart', tryInitPush, { once: true });
-  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
